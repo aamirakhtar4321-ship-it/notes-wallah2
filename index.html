@@ -4,37 +4,63 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Notes Wallah</title>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<!-- ===== LOGIN SCREEN ===== -->
+<!-- ===== SPLASH / LOGIN SCREEN ===== -->
 <div id="loginScreen" class="screen active">
     <div class="login-container">
-        <div class="app-logo">📚</div>
+        <div class="app-logo">
+            <i class="fas fa-graduation-cap"></i>
+        </div>
         <h1 class="app-title">Notes Wallah</h1>
-        <p class="app-subtitle">Student Learning App</p>
+        <p class="app-subtitle">Your Learning Companion</p>
         
         <div id="loginForm">
-            <input type="email" id="loginEmail" placeholder="Email" class="input-field">
-            <input type="password" id="loginPassword" placeholder="Password" class="input-field">
-            <button onclick="handleLogin()" class="btn-primary">Login</button>
+            <div class="input-group">
+                <i class="fas fa-envelope"></i>
+                <input type="email" id="loginEmail" placeholder="Email Address" class="input-field">
+            </div>
+            <div class="input-group">
+                <i class="fas fa-lock"></i>
+                <input type="password" id="loginPassword" placeholder="Password" class="input-field">
+            </div>
+            <button onclick="handleLogin()" class="btn-primary">
+                <i class="fas fa-sign-in-alt"></i> Login
+            </button>
             <p class="switch-text">Don't have account? <span onclick="showSignup()">Sign Up</span></p>
         </div>
 
         <div id="signupForm" style="display:none;">
-            <input type="text" id="signupName" placeholder="Full Name" class="input-field">
-            <input type="email" id="signupEmail" placeholder="Email" class="input-field">
-            <input type="password" id="signupPassword" placeholder="Password" class="input-field">
-            <input type="password" id="signupConfirm" placeholder="Confirm Password" class="input-field">
-            <label class="class-label">Select Your Class:</label>
+            <div class="input-group">
+                <i class="fas fa-user"></i>
+                <input type="text" id="signupName" placeholder="Full Name" class="input-field">
+            </div>
+            <div class="input-group">
+                <i class="fas fa-envelope"></i>
+                <input type="email" id="signupEmail" placeholder="Email" class="input-field">
+            </div>
+            <div class="input-group">
+                <i class="fas fa-lock"></i>
+                <input type="password" id="signupPassword" placeholder="Password" class="input-field">
+            </div>
+            <div class="input-group">
+                <i class="fas fa-check-circle"></i>
+                <input type="password" id="signupConfirm" placeholder="Confirm Password" class="input-field">
+            </div>
+            <label class="class-label"><i class="fas fa-users"></i> Select Your Class:</label>
             <select id="signupClass" class="input-field">
                 <option value="9">Class 9</option>
                 <option value="10">Class 10</option>
                 <option value="11" selected>Class 11</option>
                 <option value="12">Class 12</option>
             </select>
-            <button onclick="handleSignup()" class="btn-primary">Sign Up</button>
+            <button onclick="handleSignup()" class="btn-primary">
+                <i class="fas fa-user-plus"></i> Sign Up
+            </button>
             <p class="switch-text">Already have account? <span onclick="showLogin()">Login</span></p>
         </div>
     </div>
@@ -43,185 +69,238 @@
 <!-- ===== MAIN APP ===== -->
 <div id="appScreen" class="screen">
     
-    <!-- HEADER -->
+    <!-- TOP HEADER -->
     <div class="app-header">
         <div class="header-left">
-            <span class="greeting">👋 Hello, <span id="userName">Student</span></span>
-            <span class="class-badge" id="userClass">Class 11</span>
+            <span class="greeting">
+                <i class="fas fa-hand-peace"></i> Hello, <span id="userName">Student</span>
+            </span>
+            <span class="class-badge" id="userClass">
+                <i class="fas fa-users"></i> Class 11
+            </span>
         </div>
         <div class="header-right">
-            <span class="xp-display">⭐ <span id="xpDisplay">0</span> XP</span>
-            <button onclick="logoutUser()" class="logout-btn">🚪</button>
+            <span class="xp-display">
+                <i class="fas fa-star" style="color:#f59e0b;"></i> <span id="xpDisplay">0</span> XP
+            </span>
+            <button onclick="logoutUser()" class="logout-btn">
+                <i class="fas fa-sign-out-alt"></i>
+            </button>
         </div>
     </div>
 
-    <!-- DASHBOARD -->
+    <!-- DASHBOARD CONTENT -->
     <div id="dashboardContent" class="content-area">
         
+        <!-- Quick Access -->
         <div class="quick-access">
-            <h3>⚡ Quick Access</h3>
+            <h3><i class="fas fa-bolt" style="color:#667eea;"></i> Quick Access</h3>
             <div class="quick-grid">
                 <div class="quick-item" onclick="navigateTo('subjects')">
-                    <span class="quick-icon">📖</span>
+                    <span class="quick-icon"><i class="fas fa-book-open"></i></span>
                     <span>Subjects</span>
                 </div>
                 <div class="quick-item" onclick="navigateTo('tests')">
-                    <span class="quick-icon">📝</span>
+                    <span class="quick-icon"><i class="fas fa-pencil-alt"></i></span>
                     <span>Tests</span>
                 </div>
                 <div class="quick-item" onclick="navigateTo('books')">
-                    <span class="quick-icon">📚</span>
+                    <span class="quick-icon"><i class="fas fa-book"></i></span>
                     <span>Books</span>
                 </div>
                 <div class="quick-item" onclick="navigateTo('profile')">
-                    <span class="quick-icon">👤</span>
+                    <span class="quick-icon"><i class="fas fa-user-circle"></i></span>
                     <span>Profile</span>
                 </div>
             </div>
         </div>
 
+        <!-- Progress Section -->
         <div class="progress-section">
-            <h3>📊 Your Progress</h3>
+            <h3><i class="fas fa-chart-line" style="color:#667eea;"></i> Your Progress</h3>
             <div class="progress-card">
                 <div class="progress-stat">
-                    <span>Tests Completed</span>
+                    <span><i class="fas fa-check-circle" style="color:#4caf50;"></i> Tests Completed</span>
                     <span id="testsCompleted">0</span>
                 </div>
                 <div class="progress-stat">
-                    <span>Average Score</span>
+                    <span><i class="fas fa-percent" style="color:#667eea;"></i> Average Score</span>
                     <span id="avgScore">0%</span>
                 </div>
                 <div class="progress-bar">
                     <div class="progress-fill" style="width:0%" id="progressFill"></div>
                 </div>
-                <small>Level: <span id="userLevel">Beginner</span></small>
+                <div class="level-badge">
+                    <i class="fas fa-trophy" style="color:#f59e0b;"></i>
+                    <span id="userLevel">Beginner</span>
+                </div>
             </div>
         </div>
 
+        <!-- Recent Activity -->
         <div class="recent-section">
-            <h3>🕐 Recent Activity</h3>
+            <h3><i class="fas fa-history" style="color:#667eea;"></i> Recent Activity</h3>
             <div id="recentList">
-                <p class="empty-msg">No recent activity yet. Start a test!</p>
+                <div class="empty-msg">
+                    <i class="fas fa-hourglass-start" style="font-size:32px;display:block;margin-bottom:8px;color:#ccc;"></i>
+                    No recent activity yet. Start a test!
+                </div>
             </div>
+        </div>
+
+        <!-- AD PLACEHOLDER - Native Banner -->
+        <div class="ad-banner">
+            <i class="fas fa-ad" style="margin-right:8px;"></i> Ad Space (Native Banner)
         </div>
     </div>
 
-    <!-- BOTTOM NAV -->
+    <!-- BOTTOM NAVIGATION -->
     <nav class="bottom-nav">
         <div class="nav-item active" onclick="navigateTo('home')">
-            <span class="nav-icon">🏠</span>
+            <i class="fas fa-home"></i>
             <span>Home</span>
         </div>
         <div class="nav-item" onclick="navigateTo('subjects')">
-            <span class="nav-icon">📖</span>
+            <i class="fas fa-book-open"></i>
             <span>Notes</span>
         </div>
         <div class="nav-item" onclick="navigateTo('tests')">
-            <span class="nav-icon">📝</span>
+            <i class="fas fa-pencil-alt"></i>
             <span>Test</span>
         </div>
         <div class="nav-item" onclick="navigateTo('books')">
-            <span class="nav-icon">📚</span>
+            <i class="fas fa-book"></i>
             <span>Books</span>
         </div>
         <div class="nav-item" onclick="navigateTo('profile')">
-            <span class="nav-icon">👤</span>
+            <i class="fas fa-user"></i>
             <span>Account</span>
         </div>
     </nav>
 </div>
 
-<!-- ===== SUBJECTS ===== -->
+<!-- ===== SUBJECTS SCREEN ===== -->
 <div id="subjectsScreen" class="screen">
     <div class="screen-header">
-        <button class="back-btn" onclick="navigateTo('home')">←</button>
-        <h2>📖 Subjects</h2>
+        <button class="back-btn" onclick="navigateTo('home')"><i class="fas fa-arrow-left"></i></button>
+        <h2><i class="fas fa-book-open" style="color:#667eea;"></i> Subjects</h2>
     </div>
     <div id="subjectsList" class="list-container"></div>
 </div>
 
-<!-- ===== TESTS ===== -->
+<!-- ===== TESTS SCREEN ===== -->
 <div id="testsScreen" class="screen">
     <div class="screen-header">
-        <button class="back-btn" onclick="navigateTo('home')">←</button>
-        <h2>📝 Tests</h2>
+        <button class="back-btn" onclick="navigateTo('home')"><i class="fas fa-arrow-left"></i></button>
+        <h2><i class="fas fa-pencil-alt" style="color:#667eea;"></i> Tests</h2>
     </div>
     <div id="testsContainer">
         <div class="test-option" onclick="startFullTest()">
-            <h3>📋 Full Syllabus Test</h3>
-            <p>Complete class syllabus - 50 questions</p>
+            <div class="test-icon"><i class="fas fa-list-ul"></i></div>
+            <div class="test-info">
+                <h3>Full Syllabus Test</h3>
+                <p>Complete class syllabus - 50 questions</p>
+            </div>
+            <i class="fas fa-chevron-right" style="color:#ccc;"></i>
         </div>
         <div class="test-option" onclick="showSubjectWise()">
-            <h3>📂 Subject-wise Test</h3>
-            <p>Select a subject and test yourself</p>
+            <div class="test-icon"><i class="fas fa-folder-open"></i></div>
+            <div class="test-info">
+                <h3>Subject-wise Test</h3>
+                <p>Select a subject and test yourself</p>
+            </div>
+            <i class="fas fa-chevron-right" style="color:#ccc;"></i>
         </div>
         <div class="test-option" onclick="showChapterWise()">
-            <h3>📑 Chapter-wise Test</h3>
-            <p>Focus on specific chapters</p>
+            <div class="test-icon"><i class="fas fa-layer-group"></i></div>
+            <div class="test-info">
+                <h3>Chapter-wise Test</h3>
+                <p>Focus on specific chapters</p>
+            </div>
+            <i class="fas fa-chevron-right" style="color:#ccc;"></i>
+        </div>
+        <!-- AD PLACEHOLDER -->
+        <div class="ad-banner" style="margin-top:16px;">
+            <i class="fas fa-ad"></i> Ad Space (Banner)
         </div>
     </div>
 </div>
 
-<!-- ===== BOOKS ===== -->
+<!-- ===== BOOKS SCREEN ===== -->
 <div id="booksScreen" class="screen">
     <div class="screen-header">
-        <button class="back-btn" onclick="navigateTo('home')">←</button>
-        <h2>📚 Books & Resources</h2>
+        <button class="back-btn" onclick="navigateTo('home')"><i class="fas fa-arrow-left"></i></button>
+        <h2><i class="fas fa-book" style="color:#667eea;"></i> Books & Resources</h2>
     </div>
     <div class="books-grid">
         <div class="book-card">
+            <i class="fas fa-book-open" style="font-size:32px;color:#667eea;margin-bottom:8px;"></i>
             <h4>NCERT Textbooks</h4>
             <p>Official NCERT books for all classes</p>
-            <a href="https://ncert.nic.in/textbook.php" target="_blank" class="book-link">Read Online →</a>
+            <a href="https://ncert.nic.in/textbook.php" target="_blank" class="book-link">
+                Read Online <i class="fas fa-external-link-alt" style="font-size:12px;"></i>
+            </a>
         </div>
         <div class="book-card">
+            <i class="fas fa-book-reader" style="font-size:32px;color:#667eea;margin-bottom:8px;"></i>
             <h4>Reference Books</h4>
             <p>Recommended reference materials</p>
-            <a href="https://www.vedantu.com/ncert-books" target="_blank" class="book-link">Explore →</a>
+            <a href="https://www.vedantu.com/ncert-books" target="_blank" class="book-link">
+                Explore <i class="fas fa-external-link-alt" style="font-size:12px;"></i>
+            </a>
         </div>
         <div class="book-card">
+            <i class="fas fa-scroll" style="font-size:32px;color:#667eea;margin-bottom:8px;"></i>
             <h4>Previous Year Papers</h4>
             <p>Practice with past exam papers</p>
-            <a href="https://www.cbse.gov.in/" target="_blank" class="book-link">View →</a>
+            <a href="https://www.cbse.gov.in/" target="_blank" class="book-link">
+                View <i class="fas fa-external-link-alt" style="font-size:12px;"></i>
+            </a>
         </div>
-        <!-- AD PLACEHOLDER - Banner Ad Space -->
-        <div class="book-card ad-placeholder" style="grid-column: span 2;">
-            <span>📢 Ad Space (Banner)</span>
-            <span style="font-size:12px;color:#999;">Replace with AdMob</span>
+        <div class="book-card ad-banner" style="grid-column: span 2; text-align:center;">
+            <i class="fas fa-ad"></i> Ad Space (Native)
         </div>
     </div>
 </div>
 
-<!-- ===== PROFILE ===== -->
+<!-- ===== PROFILE SCREEN ===== -->
 <div id="profileScreen" class="screen">
     <div class="screen-header">
-        <button class="back-btn" onclick="navigateTo('home')">←</button>
-        <h2>👤 Account</h2>
+        <button class="back-btn" onclick="navigateTo('home')"><i class="fas fa-arrow-left"></i></button>
+        <h2><i class="fas fa-user-circle" style="color:#667eea;"></i> Account</h2>
     </div>
     <div class="profile-card">
-        <div class="profile-avatar">👨‍🎓</div>
+        <div class="profile-avatar">
+            <i class="fas fa-user-graduate" style="font-size:80px;color:#667eea;"></i>
+        </div>
         <h3 id="profileName">Student Name</h3>
-        <p id="profileEmail">student@email.com</p>
-        <p>Class: <span id="profileClass">11</span></p>
-        <p>⭐ XP: <span id="profileXP">0</span></p>
-        <button class="btn-primary" onclick="navigateTo('settings')">⚙️ Settings</button>
-        <button class="btn-secondary" onclick="logoutUser()">🚪 Logout</button>
-        <!-- AD PLACEHOLDER - Native Ad -->
-        <div class="ad-placeholder" style="margin-top:20px;">
-            📢 Native Ad Space
+        <p><i class="fas fa-envelope" style="color:#667eea;width:20px;"></i> <span id="profileEmail">student@email.com</span></p>
+        <p><i class="fas fa-users" style="color:#667eea;width:20px;"></i> Class: <span id="profileClass">11</span></p>
+        <p><i class="fas fa-star" style="color:#f59e0b;width:20px;"></i> XP: <span id="profileXP">0</span></p>
+        
+        <button class="btn-primary" onclick="navigateTo('settings')">
+            <i class="fas fa-cog"></i> Settings
+        </button>
+        <button class="btn-secondary" onclick="logoutUser()">
+            <i class="fas fa-sign-out-alt"></i> Logout
+        </button>
+        
+        <!-- AD PLACEHOLDER -->
+        <div class="ad-banner" style="margin-top:20px;">
+            <i class="fas fa-ad"></i> Ad Space (Native)
         </div>
     </div>
 </div>
 
-<!-- ===== SETTINGS ===== -->
+<!-- ===== SETTINGS SCREEN ===== -->
 <div id="settingsScreen" class="screen">
     <div class="screen-header">
-        <button class="back-btn" onclick="navigateTo('profile')">←</button>
-        <h2>⚙️ Settings</h2>
+        <button class="back-btn" onclick="navigateTo('profile')"><i class="fas fa-arrow-left"></i></button>
+        <h2><i class="fas fa-cog" style="color:#667eea;"></i> Settings</h2>
     </div>
     <div class="settings-list">
         <div class="setting-item">
-            <span>🌓 Theme</span>
+            <span><i class="fas fa-moon" style="color:#667eea;width:24px;"></i> Theme</span>
             <select id="themeSelect" onchange="changeTheme()">
                 <option value="light">Light</option>
                 <option value="dark">Dark</option>
@@ -229,16 +308,20 @@
             </select>
         </div>
         <div class="setting-item">
-            <span>🔑 Change Password</span>
+            <span><i class="fas fa-key" style="color:#667eea;width:24px;"></i> Change Password</span>
             <button class="btn-small" onclick="showChangePassword()">Change</button>
         </div>
         <div class="setting-item">
-            <span>📊 Export Results</span>
+            <span><i class="fas fa-file-export" style="color:#667eea;width:24px;"></i> Export Results</span>
             <button class="btn-small" onclick="exportResults()">Export</button>
         </div>
+        <div class="setting-item">
+            <span><i class="fas fa-shield-alt" style="color:#667eea;width:24px;"></i> Privacy Policy</span>
+            <button class="btn-small" onclick="alert('Privacy Policy: Your data is stored locally on your device only. We do not collect or share any personal information.')">View</button>
+        </div>
         <!-- AD PLACEHOLDER -->
-        <div class="ad-placeholder">
-            <span>📢 Interstitial Ad Space</span>
+        <div class="ad-banner" style="margin-top:20px;">
+            <i class="fas fa-ad"></i> Ad Space (Interstitial)
         </div>
     </div>
 </div>
@@ -246,20 +329,33 @@
 <!-- ===== CHANGE PASSWORD MODAL ===== -->
 <div id="passwordModal" class="modal" style="display:none;">
     <div class="modal-content">
-        <h3>Change Password</h3>
-        <input type="password" id="currentPass" placeholder="Current Password" class="input-field">
-        <input type="password" id="newPass" placeholder="New Password" class="input-field">
-        <input type="password" id="confirmNewPass" placeholder="Confirm New Password" class="input-field">
-        <button onclick="changePassword()" class="btn-primary">Update</button>
-        <button onclick="closeModal()" class="btn-secondary">Cancel</button>
+        <h3><i class="fas fa-key" style="color:#667eea;"></i> Change Password</h3>
+        <div class="input-group">
+            <i class="fas fa-lock"></i>
+            <input type="password" id="currentPass" placeholder="Current Password" class="input-field">
+        </div>
+        <div class="input-group">
+            <i class="fas fa-key"></i>
+            <input type="password" id="newPass" placeholder="New Password" class="input-field">
+        </div>
+        <div class="input-group">
+            <i class="fas fa-check-circle"></i>
+            <input type="password" id="confirmNewPass" placeholder="Confirm New Password" class="input-field">
+        </div>
+        <button onclick="changePassword()" class="btn-primary">
+            <i class="fas fa-save"></i> Update
+        </button>
+        <button onclick="closeModal()" class="btn-secondary">
+            <i class="fas fa-times"></i> Cancel
+        </button>
     </div>
 </div>
 
 <!-- ===== TEST SCREEN ===== -->
 <div id="testScreen" class="screen">
     <div class="screen-header">
-        <button class="back-btn" onclick="closeTest()">←</button>
-        <h2 id="testTitle">Test</h2>
+        <button class="back-btn" onclick="closeTest()"><i class="fas fa-arrow-left"></i></button>
+        <h2 id="testTitle"><i class="fas fa-pencil-alt" style="color:#667eea;"></i> Test</h2>
     </div>
     <div id="testContent" style="padding:16px 20px 100px;"></div>
 </div>
@@ -267,12 +363,12 @@
 <!-- ===== RESULT SCREEN ===== -->
 <div id="resultScreen" class="screen">
     <div class="screen-header">
-        <button class="back-btn" onclick="navigateTo('home')">←</button>
-        <h2>📊 Test Result</h2>
+        <button class="back-btn" onclick="navigateTo('home')"><i class="fas fa-arrow-left"></i></button>
+        <h2><i class="fas fa-chart-bar" style="color:#667eea;"></i> Test Result</h2>
     </div>
     <div id="resultContent" style="padding:16px 20px 100px;"></div>
 </div>
 
 <script src="script.js"></script>
 </body>
-  </html>
+</html>
